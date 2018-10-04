@@ -12,15 +12,13 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.AbstractMap.SimpleEntry;
-import java.util.logging.Logger;
-
-import logging.MyLogger;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
+import logging.MyLogger;
 import remoteObject.EnrollmentInterface;
 import util.Constants;
 import util.Semester;
@@ -57,7 +55,7 @@ public class StudentClient implements Runnable {
 
 		try {
 			setupLogging();
-			LOGGER.info("STUDENT LOGIN("+user+")");
+			LOGGER.info("STUDENT LOGIN(" + user + ")");
 			registry = LocateRegistry.getRegistry(null);
 			stub = (EnrollmentInterface) registry.lookup(user.getDept().toString());
 			performOperations();
@@ -95,24 +93,25 @@ public class StudentClient implements Runnable {
 				Semester semester = Semester.valueOf(input.next().toUpperCase());
 				result = stub.enrolCourse(user.toString(), courseId, semester.toString());
 
-				LOGGER.info(String.format(Constants.LOG_MSG, "enrolCourse",Arrays.asList(user,courseId,semester),result.getKey(),result.getValue()));
-				if(result.getKey())
-					System.out.println("SUCCESS - "+result.getValue());
+				LOGGER.info(String.format(Constants.LOG_MSG, "enrolCourse", Arrays.asList(user, courseId, semester),
+						result.getKey(), result.getValue()));
+				if (result.getKey())
+					System.out.println("SUCCESS - " + result.getValue());
 				else
-					System.out.println("FAILURE - "+result.getValue());
-				
+					System.out.println("FAILURE - " + result.getValue());
+
 				break;
-				
+
 			case 2:
 				HashMap<String, ArrayList<String>> courseList = stub.getClassSchedule(user.toString());
-				
-				LOGGER.info(String.format(Constants.LOG_MSG, "getClassSchedule",Arrays.asList(user),courseList!=null,courseList));
-				if(courseList!=null)
+
+				LOGGER.info(String.format(Constants.LOG_MSG, "getClassSchedule", Arrays.asList(user),
+						courseList != null, courseList));
+				if (courseList != null)
 					System.out.println(courseList);
 				else
 					System.out.println("There was some problem in getting the class schedule. Please try again later.");
-				
-				
+
 				break;
 			case 3:
 				System.out.print("Enter the Course ID to drop(eg. COMP2342,SOEN2345,...) : ");
@@ -123,20 +122,21 @@ public class StudentClient implements Runnable {
 					break;
 				}
 				result = stub.dropCourse(user.toString(), courseId);
-				
-				LOGGER.info(String.format(Constants.LOG_MSG, "dropCourse",Arrays.asList(user,courseId),result.getKey(),result.getValue()));
-				if(result.getKey())
-					System.out.println("SUCCESS -"+result.getValue());
+
+				LOGGER.info(String.format(Constants.LOG_MSG, "dropCourse", Arrays.asList(user, courseId),
+						result.getKey(), result.getValue()));
+				if (result.getKey())
+					System.out.println("SUCCESS -" + result.getValue());
 				else
-					System.out.println("FAILURE - "+result.getValue());
-				
+					System.out.println("FAILURE - " + result.getValue());
+
 				break;
-				
+
 			case 4:
-					System.out.println("HAVE A NICE DAY!");
-					break;
+				System.out.println("HAVE A NICE DAY!");
+				break;
 			default:
-					System.out.println("Please select a valid operation.");
+				System.out.println("Please select a valid operation.");
 				break;
 			}
 
@@ -156,15 +156,15 @@ public class StudentClient implements Runnable {
 		System.out.print("Input your operation number : ");
 		return input.nextInt();
 	}
-	
+
 	private void setupLogging() throws IOException {
 		File files = new File(Constants.STUDENT_LOG_DIRECTORY);
-        if (!files.exists()) 
-            files.mkdirs(); 
-        files = new File(Constants.STUDENT_LOG_DIRECTORY+user+".log");
-        if(!files.exists())
-        	files.createNewFile();
-        MyLogger.setup(files.getAbsolutePath());
+		if (!files.exists())
+			files.mkdirs();
+		files = new File(Constants.STUDENT_LOG_DIRECTORY + user + ".log");
+		if (!files.exists())
+			files.createNewFile();
+		MyLogger.setup(files.getAbsolutePath());
 	}
 
 }

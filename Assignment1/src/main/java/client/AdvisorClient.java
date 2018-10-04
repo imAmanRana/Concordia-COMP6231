@@ -15,6 +15,7 @@ import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -250,6 +251,7 @@ public class AdvisorClient implements Runnable {
 				break;
 			case 7:
 				System.out.println("HAVE A NICE DAY!");
+				break;
 			default:
 				System.out.println("Please select a valid operation.");
 				break;
@@ -273,6 +275,7 @@ public class AdvisorClient implements Runnable {
 		System.out.println("|6| Drop a Course.");
 		System.out.println("|7| Quit.");
 		System.out.print("Input your operation number : ");
+		
 		return input.nextInt();
 	}
 	
