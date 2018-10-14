@@ -265,7 +265,6 @@ public class AdvisorClient implements Runnable {
 				
 				break;
 			case 7:
-				System.out.println("HAVE A NICE DAY!");
 				break;
 			default:
 				System.out.println("Please select a valid operation.");
@@ -276,6 +275,7 @@ public class AdvisorClient implements Runnable {
 			System.out.println("\n\n");
 			userSelection = displayMenu();
 		}
+		System.out.println("HAVE A NICE DAY!");
 	}
 
 	

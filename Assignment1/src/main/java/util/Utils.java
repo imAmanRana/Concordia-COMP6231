@@ -47,8 +47,11 @@ public class Utils {
 		else if (department != null && department != Department.valueOf(dept))
 			return new SimpleEntry<Boolean, String>(false,
 					"You are not authorized for this department('" + dept + "').");
-		else if (!role.matches(userRole.toString()))
+		else if (!roleMatch(role))
 			return new SimpleEntry<Boolean, String>(false, "The role('" + role + "') isn't correct.");
+		else if(role!=null && userRole!=Role.fromString(role)) {
+			return new SimpleEntry<Boolean, String>(false, "This operation is invalid for an advisor('" + role + "').");
+		}
 
 		try {
 			Integer.parseInt(value);

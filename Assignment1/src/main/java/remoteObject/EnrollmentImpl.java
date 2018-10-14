@@ -78,11 +78,13 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 				status = false;
 				msg = "Course already exists for "+semester+" semester.";
 			} else {
-				HashMap<String, Object> courseDetails = new HashMap<>();
-				courseDetails.put(Constants.CAPACITY, capacity);
-				courseDetails.put(Constants.STUDENTS_ENROLLED, 0);
-				courseDetails.put(Constants.STUDENT_IDS, new HashSet<String>());
-				courses.put(courseId, courseDetails);
+				synchronized(this) {
+					HashMap<String, Object> courseDetails = new HashMap<>();
+					courseDetails.put(Constants.CAPACITY, capacity);
+					courseDetails.put(Constants.STUDENTS_ENROLLED, 0);
+					courseDetails.put(Constants.STUDENT_IDS, new HashSet<String>());
+					courses.put(courseId, courseDetails);
+				}
 				status = true;
 				msg = courseId + " Added.";
 			}
@@ -95,7 +97,11 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 			courseDetails.put(Constants.STUDENT_IDS, new HashSet<String>());
 			HashMap<String, HashMap<String, Object>> courses = new HashMap<>();
 			courses.put(courseId, courseDetails);
-			this.deptDatabase.put(semester, courses);
+			
+			//synchronizing the write operation to the in-memory database
+			synchronized(this) {
+				this.deptDatabase.put(semester, courses);
+			}
 			status = true;
 			msg = courseId + " Added.";
 		}
@@ -124,7 +130,9 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 			HashMap<String, HashMap<String, Object>> courses = deptDatabase.get(semester);
 
 			if (courses.containsKey(courseId)) {
-				courses.remove(courseId);
+				synchronized(this) {
+					courses.remove(courseId);
+				}
 				status = true;
 				msg = courseId + " removed";
 			} else {
@@ -262,8 +270,8 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 				}
 			}
 
-			status = false;
-			msg = "Department not found.";
+			//status = false;
+			//msg = "Department not found.";
 		}
 
 		if (result == null)
@@ -287,15 +295,18 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 
 				if (((Integer) courseDetails.get(Constants.CAPACITY)
 						- (Integer) courseDetails.get(Constants.STUDENTS_ENROLLED)) > 0) {
-					status = ((HashSet<String>) courseDetails.get(Constants.STUDENT_IDS)).add(studentId);
-					if (status) {
-						courseDetails.put(Constants.STUDENTS_ENROLLED,
-								(Integer) courseDetails.get(Constants.STUDENTS_ENROLLED) + 1);
-						status = true;
-						msg = "Enrollment Successful.";
-					} else {
-						status = false;
-						msg = studentId + " is already enrolled in "+courseId+".";
+					
+					synchronized(this) {
+						status = ((HashSet<String>) courseDetails.get(Constants.STUDENT_IDS)).add(studentId);
+						if (status) {
+							courseDetails.put(Constants.STUDENTS_ENROLLED,
+									(Integer) courseDetails.get(Constants.STUDENTS_ENROLLED) + 1);
+							status = true;
+							msg = "Enrollment Successful.";
+						} else {
+							status = false;
+							msg = studentId + " is already enrolled in "+courseId+".";
+						}
 					}
 				} else {
 					status = false;
@@ -391,18 +402,19 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 			deptDatabase.forEach((sem, courses) -> {
 				if (courses.containsKey(courseId)) {
 					courses.forEach((course, courseDetails) -> {
-						if (course.equals(courseId)) {
-							boolean status = ((HashSet<String>) courseDetails.get(Constants.STUDENT_IDS))
-									.remove(studentId);
-							if (status) {
-								courseDetails.put(Constants.STUDENTS_ENROLLED,
-										((Integer) courseDetails.get(Constants.STUDENTS_ENROLLED) - 1));
-								temp.put(true, "success");
-							} else {
-								temp.put(false, studentId + " isn't enrolled in "+courseId+".");
+						synchronized(this) {
+							if (course.equals(courseId)) {
+								boolean status = ((HashSet<String>) courseDetails.get(Constants.STUDENT_IDS))
+										.remove(studentId);
+								if (status) {
+									courseDetails.put(Constants.STUDENTS_ENROLLED,
+											((Integer) courseDetails.get(Constants.STUDENTS_ENROLLED) - 1));
+									temp.put(true, "success");
+								} else {
+									temp.put(false, studentId + " isn't enrolled in "+courseId+".");
+								}
 							}
 						}
-
 					});
 				} else {
 					temp.put(false, courseId + " isn't offered by the department yet.");

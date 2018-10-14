@@ -149,7 +149,6 @@ public class StudentClient implements Runnable {
 				break;
 
 			case 4:
-				System.out.println("HAVE A NICE DAY!");
 				break;
 			default:
 				System.out.println("Please select a valid operation.");
@@ -159,6 +158,7 @@ public class StudentClient implements Runnable {
 			System.out.println("\n\n");
 			userSelection = displayMenu();
 		}
+		System.out.println("HAVE A NICE DAY!");
 	}
 
 	/**
