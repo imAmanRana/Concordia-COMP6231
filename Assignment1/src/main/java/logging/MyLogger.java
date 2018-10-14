@@ -1,6 +1,7 @@
 /*
  * COMP6231 - Distributed Systems | Fall2018
  * Assignment 1 
+ * Professor - Rajagopalan Jayakumar
  * Distributed Course Registration System (DCRS)
  */
 package logging;

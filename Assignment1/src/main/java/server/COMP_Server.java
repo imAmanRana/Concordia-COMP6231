@@ -1,6 +1,7 @@
 /*
  * COMP6231 - Distributed Systems | Fall2018
  * Assignment 1 
+ * Professor - Rajagopalan Jayakumar
  * Distributed Course Registration System (DCRS)
  */
 package server;
@@ -19,6 +20,8 @@ import util.Constants;
 import util.Department;
 
 /**
+ * <b>Computer Science Department Server</b> <br>
+ * COMP
  * @author Amandeep Singh
  * @see <a href="www.linkedin.com/in/imamanrana">Profile</a>
  *
@@ -53,6 +56,10 @@ public class COMP_Server {
 
 	}
 	
+	/**
+	 * Logging setup for COMP server
+	 * @throws IOException
+	 */
 	private static void setupLogging() throws IOException {
 		File files = new File(Constants.SERVER_LOG_DIRECTORY);
         if (!files.exists()) 

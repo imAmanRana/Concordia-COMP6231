@@ -1,6 +1,7 @@
 /*
  * COMP6231 - Distributed Systems | Fall2018
  * Assignment 1 
+ * Professor - Rajagopalan Jayakumar
  * Distributed Course Registration System (DCRS)
  */
 package client;
@@ -25,6 +26,10 @@ import util.Semester;
 import util.Utils;
 
 /**
+ * * The <code>StudentClient</code> class contains the code to handle and perform
+ * the operations related to a Student.
+ * This class implements <code>Runnable</code> so that each student login can be
+ * handled on a separate thread. 
  * @author Amandeep Singh
  * @see <a href="www.linkedin.com/in/imamanrana">Profile</a>
  *
@@ -37,6 +42,10 @@ public class StudentClient implements Runnable {
 	Scanner input;
 	EnrollmentInterface stub;
 
+	/**
+	 * StudentClient constructor to initialize its object
+	 * @param user
+	 */
 	public StudentClient(User user) {
 		this.user = user;
 		input = new Scanner(System.in);
@@ -75,9 +84,9 @@ public class StudentClient implements Runnable {
 	private void performOperations() throws RemoteException {
 
 		int userSelection = displayMenu();
-		String courseId;
+		String courseId,sem;
+		Semester semester;
 		SimpleEntry<Boolean, String> result;
-		boolean status;
 		while (userSelection != 4) {
 
 			switch (userSelection) {
@@ -90,7 +99,14 @@ public class StudentClient implements Runnable {
 					break;
 				}
 				System.out.print("Enter Semester(FALL|WINTER|SUMMER) : ");
-				Semester semester = Semester.valueOf(input.next().toUpperCase());
+				sem = input.next();
+				result = Utils.validateSemester(sem.trim());
+				if (!result.getKey()) {
+					System.out.println(result.getValue());
+					break;
+				}else {
+					semester = Semester.valueOf(sem.toUpperCase());
+				}
 				result = stub.enrolCourse(user.toString(), courseId, semester.toString());
 
 				LOGGER.info(String.format(Constants.LOG_MSG, "enrolCourse", Arrays.asList(user, courseId, semester),
@@ -145,6 +161,10 @@ public class StudentClient implements Runnable {
 		}
 	}
 
+	/**
+	 * Display menu to the Student
+	 * @return
+	 */
 	private int displayMenu() {
 		System.out.println("--------------------------------");
 		System.out.println("|	Available Operations 	|");
@@ -157,6 +177,10 @@ public class StudentClient implements Runnable {
 		return input.nextInt();
 	}
 
+	/**
+	 * Configures the logger
+	 * @throws IOException
+	 */
 	private void setupLogging() throws IOException {
 		File files = new File(Constants.STUDENT_LOG_DIRECTORY);
 		if (!files.exists())

@@ -1,11 +1,13 @@
 /*
  * COMP6231 - Distributed Systems | Fall2018
  * Assignment 1 
+ * Professor - Rajagopalan Jayakumar
  * Distributed Course Registration System (DCRS)
  */
 package util;
 
 /**
+ * Department Enumeration
  * @author Amandeep Singh
  * @see <a href="www.linkedin.com/in/imamanrana">Profile</a>
  *
@@ -25,7 +27,7 @@ public enum Department {
 
 	public static  boolean departmentExist(String dept) {
 		for (Department d : Department.values()) {
-			if (d.toString().equals(dept))
+			if (d.toString().equals(dept.toUpperCase()))
 				return true;
 		}
 		return false;

@@ -1,6 +1,7 @@
 /*
  * COMP6231 - Distributed Systems | Fall2018
  * Assignment 1 
+ * Professor - Rajagopalan Jayakumar
  * Distributed Course Registration System (DCRS)
  */
 package remoteObject;
@@ -26,8 +27,10 @@ import util.Department;
 import util.Utils;
 
 /**
- * @author Amandeep Singh
- * @see <a href="www.linkedin.com/in/imamanrana">Profile</a>
+ * Implementation class for #EnrollmentInterface
+ * @author Amandeep Singh 
+ * @see <a href="www.linkedin.com/in/imamanrana" target='blank'>Profile</a>
+ * @see remoteObject.EnrollmentInterface
  *
  */
 public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInterface {
@@ -38,12 +41,18 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 
 	private Department department;
 
+	//in-memory database
 	private HashMap<String, HashMap<String, HashMap<String, Object>>> deptDatabase;
 
 	protected EnrollmentImpl() throws RemoteException {
 		super();
 	}
 
+	/**
+	 * Constructor
+	 * @param dept
+	 * @throws RemoteException
+	 */
 	public EnrollmentImpl(String dept) throws RemoteException {
 		this.department = Department.valueOf(dept);
 		deptDatabase = new HashMap<>();
@@ -56,6 +65,9 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 	 * java.lang.String, java.lang.String, int)
 	 */
 	@Override
+	/**
+	 * Adds course to the department's course list
+	 */
 	public boolean addCourse(String advisorId, String courseId, String semester, int capacity) throws RemoteException {
 		boolean status = false;
 		String msg = Constants.EMPTYSTRING;
@@ -76,6 +88,7 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 			}
 
 		} else {
+			//semester doesn't exists
 			HashMap<String, Object> courseDetails = new HashMap<>();
 			courseDetails.put(Constants.CAPACITY, capacity);
 			courseDetails.put(Constants.STUDENTS_ENROLLED, 0);
@@ -98,6 +111,9 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 	 * 
 	 * @see remoteObject.EnrollmentInterface#removeCourse(java.lang.String,
 	 * java.lang.String, java.lang.String)
+	 */
+	/**
+	 * Removes a course from the department's course list
 	 */
 	@Override
 	public boolean removeCourse(String advisorId, String courseId, String semester) throws RemoteException {
@@ -134,6 +150,9 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 	 * java.lang.String)
 	 */
 	@Override
+	/**
+	 * Lists the courses available along with the no. of vacant seats for a particular semester
+	 */
 	public HashMap<String, Integer> listCourseAvailability(String advisorId, String semester) throws RemoteException {
 
 		HashMap<String, Integer> result = new HashMap<>();
@@ -153,6 +172,11 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 		return result;
 	}
 
+	/**
+	 * Lists the courses available along with the no. of vacant seats for a particular semester on this server(COMP|SOEN|INSE)
+	 * @param semester
+	 * @return
+	 */
 	private HashMap<String, Integer> listCourseAvailabilityForThisServer(String semester) {
 		HashMap<String, Integer> result = new HashMap<>();
 		// get courses from the current department
@@ -170,6 +194,9 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 	 * 
 	 * @see remoteObject.EnrollmentInterface#enrolCourse(java.lang.String,
 	 * java.lang.String, java.lang.String)
+	 */
+	/**
+	 * Enrols a student in a particular course
 	 */
 	@Override
 	public SimpleEntry<Boolean, String> enrolCourse(String studentId, String courseId, String semester)
@@ -291,6 +318,9 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 	 * 
 	 * @see remoteObject.EnrollmentInterface#getClassSchedule(java.lang.String)
 	 */
+	/**
+	 * Returns the class schedule for a student. Enquires all the departments
+	 */
 	@Override
 	public HashMap<String, ArrayList<String>> getClassSchedule(String studentId) throws RemoteException {
 		HashMap<String, ArrayList<String>> schedule = new HashMap<>();
@@ -331,6 +361,9 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 	 * 
 	 * @see remoteObject.EnrollmentInterface#dropCourse(java.lang.String,
 	 * java.lang.String)
+	 */
+	/**
+	 * Drops a particular course for the given student
 	 */
 	@Override
 	public SimpleEntry<Boolean, String> dropCourse(String studentId, String courseId) throws RemoteException {
@@ -386,6 +419,9 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 		}
 	}
 
+	/**
+	 * UDP Server for Inter-Department communication
+	 */
 	public void UDPServer() {
 		DatagramSocket socket = null;
 		try {
@@ -416,6 +452,11 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 		}
 	}
 
+	/**
+	 * Handles the UDP request for information
+	 * @param data
+	 * @return
+	 */
 	private byte[] processUDPRequest(byte[] data) {
 
 		byte[] response = null;
@@ -449,6 +490,13 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 		return response;
 	}
 
+	/**
+	 * Creates & sends the UDP request
+	 * @param dept
+	 * @param info
+	 * @param method
+	 * @return
+	 */
 	private byte[] udpCommunication(Department dept, Object info, String method) {
 
 		LOGGER.info("Making UPD Socket Call to " + dept + " Server for method : " + method);

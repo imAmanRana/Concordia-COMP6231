@@ -1,11 +1,13 @@
 /*
  * COMP6231 - Distributed Systems | Fall2018
  * Assignment 1 
+ * Professor - Rajagopalan Jayakumar
  * Distributed Course Registration System (DCRS)
  */
 package util;
 
 /**
+ * Roles Enumeration
  * @author Amandeep Singh
  * @see <a href="www.linkedin.com/in/imamanrana">Profile</a>
  *

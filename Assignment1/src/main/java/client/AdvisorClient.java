@@ -1,6 +1,7 @@
 /*
  * COMP6231 - Distributed Systems | Fall2018
  * Assignment 1 
+ * Professor - Rajagopalan Jayakumar
  * Distributed Course Registration System (DCRS)
  */
 package client;
@@ -15,7 +16,6 @@ import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -27,9 +27,12 @@ import util.Semester;
 import util.Utils;
 
 /**
+ * The <code>AdvisorClient</code> class contains the code to handle and perform
+ * the operations related to the Advisor.
+ * This class implements <code>Runnable</code> so that each advisor login can be
+ * handled on a separate thread. 
  * @author Amandeep Singh
  * @see <a href="www.linkedin.com/in/imamanrana">Profile</a>
- *
  */
 public class AdvisorClient implements Runnable {
 
@@ -39,6 +42,10 @@ public class AdvisorClient implements Runnable {
 	Scanner input;
 	EnrollmentInterface stub;
 	
+	/**
+	 * Constructor to initialize an Advisor object
+	 * @param user <code>User</code> class object
+	 */
 	public AdvisorClient(User user) {
 		this.user = user;
 		input = new Scanner(System.in);
@@ -46,7 +53,6 @@ public class AdvisorClient implements Runnable {
 
 	/*
 	 * (non-Javadoc)
-	 * 
 	 * @see java.lang.Runnable#run()
 	 */
 	@Override
@@ -59,6 +65,7 @@ public class AdvisorClient implements Runnable {
 			setupLogging();
 			LOGGER.info("ADVISOR LOGIN("+user+")");
 			registry = LocateRegistry.getRegistry(null);
+			//lookup registry. eg - COMP or SOEN or INSE.
 			stub = (EnrollmentInterface) registry.lookup(user.getDept().toString());
 			performOperations();
 		} catch (RemoteException e) {
@@ -74,6 +81,10 @@ public class AdvisorClient implements Runnable {
 
 	}
 
+	/**
+	 * This method performs the advisor related operations.
+	 * @throws RemoteException
+	 */
 	private void performOperations() throws RemoteException {
 
 		int userSelection = displayMenu();
@@ -84,6 +95,10 @@ public class AdvisorClient implements Runnable {
 		HashMap<String, Integer> courseMap;
 		HashMap<String, ArrayList<String>> courseList;
 		boolean status;
+		
+		/* Executes the loop until the advisor quits the application i.e. presses 7
+		 * 
+		 */
 		while (userSelection != 7) {
 			switch (userSelection) {
 			case 1:
@@ -263,6 +278,11 @@ public class AdvisorClient implements Runnable {
 		}
 	}
 
+	
+	/**
+	 * Display menu to the logged in Advisor
+	 * @return
+	 */
 	private int displayMenu() {
 		System.out.println("--------------------------------");
 		System.out.println("|	Available Operations 	|");

@@ -1,20 +1,22 @@
 /*
  * COMP6231 - Distributed Systems | Fall2018
  * Assignment 1 
+ * Professor - Rajagopalan Jayakumar
  * Distributed Course Registration System (DCRS)
  */
 package util;
 
 /**
+ * Class of Constants
  * @author Amandeep Singh
  * @see <a href="www.linkedin.com/in/imamanrana">Profile</a>
  *
  */
 public class Constants {
 
-	public static final String ADVISOR_LOG_DIRECTORY = "src/main/resources/logs/advisor/";
-	public static final String STUDENT_LOG_DIRECTORY = "src/main/resources/logs/student/";
-	public static final String SERVER_LOG_DIRECTORY = "src/main/resources/logs/server/";
+	public static final String ADVISOR_LOG_DIRECTORY = "./src/main/resources/logs/advisor/";
+	public static final String STUDENT_LOG_DIRECTORY = "./src/main/resources/logs/student/";
+	public static final String SERVER_LOG_DIRECTORY = "./src/main/resources/logs/server/";
 	public static final String UNDERSCORE = "_";
 	public static final String EMPTYSTRING = "";
 	public static final String CAPACITY = "capacity";
