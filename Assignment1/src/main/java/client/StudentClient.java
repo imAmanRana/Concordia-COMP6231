@@ -92,7 +92,7 @@ public class StudentClient implements Runnable {
 			switch (userSelection) {
 			case 1:
 				System.out.print("Enter the Course ID (eg. COMP2342,SOEN2345,...) : ");
-				courseId = input.next();
+				courseId = input.next().toUpperCase();
 				result = Utils.validateCourse(courseId.trim());
 				if (!result.getKey()) {
 					System.out.println(result.getValue());
@@ -131,7 +131,7 @@ public class StudentClient implements Runnable {
 				break;
 			case 3:
 				System.out.print("Enter the Course ID to drop(eg. COMP2342,SOEN2345,...) : ");
-				courseId = input.next();
+				courseId = input.next().toUpperCase();
 				result = Utils.validateCourse(courseId.trim());
 				if (!result.getKey()) {
 					System.out.println(result.getValue());

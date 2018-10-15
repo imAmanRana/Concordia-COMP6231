@@ -216,6 +216,17 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 
 		// get student schedule
 		HashMap<String, ArrayList<String>> studentSchedule = getClassSchedule(studentId);
+		
+		// student already enrolled in 3 courses
+		if (studentSchedule.containsKey(semester)
+				&& studentSchedule.get(semester).size() >= Constants.MAX_COURSE_TAKEN_BY_STUDENT) {
+			status = false;
+			msg = studentId + " is already enrolled in " + Constants.MAX_COURSE_TAKEN_BY_STUDENT + " courses "
+					+ studentSchedule.get(semester) + " for this " + semester + " semester.";
+			return (new SimpleEntry<Boolean, String>(status, msg));
+		}
+		
+		
 		List<String> departmentCourses = new ArrayList<>();
 		List<String> outOfDepartmentCourses = new ArrayList<>();
 		studentSchedule.forEach((sem, courses) -> {
@@ -230,14 +241,6 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 		Department courseDept = Department.valueOf(courseId.substring(0, 4).toUpperCase());
 		// enroll in this department only
 		if (department == courseDept) {
-
-			// student already enrolled in 3 courses
-			if (studentSchedule.containsKey(semester)
-					&& studentSchedule.get(semester).size() >= Constants.MAX_COURSE_TAKEN_BY_STUDENT) {
-				status = false;
-				msg = studentId + " is already enrolled in " + Constants.MAX_COURSE_TAKEN_BY_STUDENT + " courses "
-						+ studentSchedule.get(semester) + " for this " + semester + " semester.";
-			}
 
 			// student already taking this course
 			if (departmentCourses.contains(courseId)) {
@@ -340,8 +343,18 @@ public class EnrollmentImpl extends UnicastRemoteObject implements EnrollmentInt
 		// inquire different departments
 		for (Department dept : Department.values()) {
 			if (dept != this.department) {
-				schedule.putAll((HashMap<String, ArrayList<String>>) Utils
-						.byteArrayToObject(udpCommunication(dept, studentId, Constants.OP_GET_CLASS_SCHEDULE)));
+				
+				HashMap<String, ArrayList<String>> deptSchedule = (HashMap<String, ArrayList<String>>) Utils
+				.byteArrayToObject(udpCommunication(dept, studentId, Constants.OP_GET_CLASS_SCHEDULE));
+				
+				
+				for(String semester : deptSchedule.keySet()) {
+					if(schedule.containsKey(semester)) {
+						schedule.get(semester).addAll(deptSchedule.get(semester));
+					}else {
+						schedule.put(semester, deptSchedule.get(semester));
+					}
+				}
 			}
 		}
 		LOGGER.info(String.format(Constants.LOG_MSG, Constants.OP_GET_CLASS_SCHEDULE, Arrays.asList(studentId),

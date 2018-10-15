@@ -103,7 +103,7 @@ public class AdvisorClient implements Runnable {
 			switch (userSelection) {
 			case 1:
 				System.out.print("Enter the course ID : ");
-				courseId = input.next();
+				courseId = input.next().toUpperCase();
 				result = Utils.validateCourse(courseId.trim(), this.user.getDept());
 				if (!result.getKey()) {
 					System.out.println(result.getValue());
@@ -137,7 +137,7 @@ public class AdvisorClient implements Runnable {
 				
 			case 2:
 				System.out.print("Enter the course ID : ");
-				courseId = input.next();
+				courseId = input.next().toUpperCase();
 				result = Utils.validateCourse(courseId.trim(), this.user.getDept());
 				if (!result.getKey()) {
 					System.out.println(result.getValue());
@@ -189,14 +189,14 @@ public class AdvisorClient implements Runnable {
 				break;
 			case 4:
 				System.out.print("Enter the Student ID(eg. COMPS1111) : ");
-				studentId = input.next();
+				studentId = input.next().toUpperCase();
 				result = Utils.validateUser(studentId.trim(), Role.STUDENT,this.user.getDept());
 				if (!result.getKey()) {
 					System.out.println(result.getValue());
 					break;
 				}
 				System.out.print("Enter the Course ID (eg. COMP2342,SOEN2345,...) : ");
-				courseId = input.next();
+				courseId = input.next().toUpperCase();
 				result = Utils.validateCourse(courseId.trim());
 				if (!result.getKey()) {
 					System.out.println(result.getValue());
@@ -224,7 +224,7 @@ public class AdvisorClient implements Runnable {
 
 			case 5:
 				System.out.print("Enter the Student ID(eg. COMPS1111) : ");
-				studentId = input.next();
+				studentId = input.next().toUpperCase();
 				result = Utils.validateUser(studentId.trim(), Role.STUDENT,this.user.getDept());
 				if (!result.getKey()) {
 					System.out.println(result.getValue());
@@ -242,14 +242,14 @@ public class AdvisorClient implements Runnable {
 				break;
 			case 6:
 				System.out.print("Enter the Student ID(eg. COMPS1111) : ");
-				studentId = input.next();
+				studentId = input.next().toUpperCase();
 				result = Utils.validateUser(studentId.trim(), Role.STUDENT,this.user.getDept());
 				if (!result.getKey()) {
 					System.out.println(result.getValue());
 					break;
 				}
 				System.out.print("Enter the Course ID to drop(eg. COMP2342,SOEN2345,...) : ");
-				courseId = input.next();
+				courseId = input.next().toUpperCase();
 				result = Utils.validateCourse(courseId.trim(), null);
 				if (!result.getKey()) {
 					System.out.println(result.getValue());

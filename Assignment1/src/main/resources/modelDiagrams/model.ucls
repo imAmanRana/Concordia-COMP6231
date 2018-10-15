@@ -3,7 +3,7 @@
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <enumeration id="1" language="java" name="util.Department" project="Assignment1" 
     file="/Assignment1/src/main/java/util/Department.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="119" y="115"/>    
+    <position height="-1" width="-1" x="585" y="674"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </enumeration>  
   <enumeration id="2" language="java" name="util.Role" project="Assignment1" 
     file="/Assignment1/src/main/java/util/Role.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="158" x="226" y="21"/>    
+    <position height="189" width="158" x="768" y="584"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,188 +21,208 @@
   </enumeration>  
   <enumeration id="3" language="java" name="util.Semester" project="Assignment1" 
     file="/Assignment1/src/main/java/util/Semester.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="190" width="228" x="398" y="20"/>    
+    <position height="190" width="228" x="698" y="13"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="4" language="java" name="util.Utils" project="Assignment1" 
-    file="/Assignment1/src/main/java/util/Utils.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="807" y="131"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="util.Constants" project="Assignment1" 
-    file="/Assignment1/src/main/java/util/Constants.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="144" y="440"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="server.COMP_Server" project="Assignment1" 
+  <class id="4" language="java" name="server.COMP_Server" project="Assignment1" 
     file="/Assignment1/src/main/java/server/COMP_Server.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="334" y="286"/>    
+    <position height="-1" width="-1" x="73" y="728"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="server.INSE_Server" project="Assignment1" 
+  <class id="5" language="java" name="server.INSE_Server" project="Assignment1" 
     file="/Assignment1/src/main/java/server/INSE_Server.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="122" x="394" y="189"/>    
+    <position height="-1" width="-1" x="208" y="730"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="server.SOEN_Server" project="Assignment1" 
+  <class id="6" language="java" name="server.SOEN_Server" project="Assignment1" 
     file="/Assignment1/src/main/java/server/SOEN_Server.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="122" x="568" y="215"/>    
+    <position height="-1" width="-1" x="349" y="730"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="remoteObject.EnrollmentImpl" project="Assignment1" 
+  <class id="7" language="java" name="remoteObject.EnrollmentImpl" project="Assignment1" 
     file="/Assignment1/src/main/java/remoteObject/EnrollmentImpl.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="387" width="405" x="195" y="231"/>    
+    <position height="-1" width="-1" x="209" y="437"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="10" language="java" name="remoteObject.EnrollmentInterface" project="Assignment1" 
+  <interface id="8" language="java" name="remoteObject.EnrollmentInterface" project="Assignment1" 
     file="/Assignment1/src/main/java/remoteObject/EnrollmentInterface.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="325" x="634" y="326"/>    
+    <position height="-1" width="-1" x="183" y="104"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="11" language="java" name="logging.MyFormatter" project="Assignment1" 
-    file="/Assignment1/src/main/java/logging/MyFormatter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="149" x="693" y="571"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="12" language="java" name="logging.MyLogger" project="Assignment1" 
-    file="/Assignment1/src/main/java/logging/MyLogger.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="136" x="843" y="515"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="13" language="java" name="client.AdvisorClient" project="Assignment1" 
+  <class id="9" language="java" name="client.AdvisorClient" project="Assignment1" 
     file="/Assignment1/src/main/java/client/AdvisorClient.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="148" x="241" y="550"/>    
+    <position height="-1" width="-1" x="517" y="462"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="client.Login" project="Assignment1" 
+  <class id="10" language="java" name="client.Login" project="Assignment1" 
     file="/Assignment1/src/main/java/client/Login.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="179" x="418" y="649"/>    
+    <position height="-1" width="-1" x="574" y="83"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="client.StudentClient" project="Assignment1" 
+  <class id="11" language="java" name="client.StudentClient" project="Assignment1" 
     file="/Assignment1/src/main/java/client/StudentClient.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="148" x="603" y="614"/>    
+    <position height="-1" width="-1" x="664" y="305"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="client.User" project="Assignment1" 
+  <class id="12" language="java" name="client.User" project="Assignment1" 
     file="/Assignment1/src/main/java/client/User.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="239" y="892"/>    
+    <position height="-1" width="-1" x="855" y="403"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <realization id="17">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="10"/>  
-  </realization>  
-  <association id="18">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="19" name="dept"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
+  <class id="13" language="java" name="logging.MyFormatter" project="Assignment1" 
+    file="/Assignment1/src/main/java/logging/MyFormatter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="160" y="914"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="logging.MyLogger" project="Assignment1" 
+    file="/Assignment1/src/main/java/logging/MyLogger.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="323" y="915"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="util.Utils" project="Assignment1" 
+    file="/Assignment1/src/main/java/util/Utils.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="707" y="897"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="16">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="17" name="dept">        
+        <position height="0" width="0" x="466" y="559"/>      
+      </attribute>      
+      <multiplicity id="18" minimum="0" maximum="1">        
+        <position height="0" width="0" x="466" y="559"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="21">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="22" name="stub"/>      
-      <multiplicity id="23" minimum="0" maximum="1"/>    
+  <association id="19">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="20" name="department">        
+        <position height="0" width="0" x="466" y="559"/>      
+      </attribute>      
+      <multiplicity id="21" minimum="0" maximum="1">        
+        <position height="0" width="0" x="466" y="559"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="24">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="25" name="user"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
+  <association id="22">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="23" name="stub">        
+        <position height="0" width="0" x="-613" y="-307"/>      
+      </attribute>      
+      <multiplicity id="24" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-613" y="-307"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="27">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="28" name="role"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
+  <realization id="25">    
+    <bendpoint x="192" y="218"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <association id="26">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="27" name="role">        
+        <position height="0" width="0" x="542" y="563"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="0" width="0" x="542" y="563"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="30">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="31" name="user"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="33">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="34" name="stub"/>      
-      <multiplicity id="35" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="36">    
+  <association id="29">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="37" name="department"/>      
-      <multiplicity id="38" minimum="0" maximum="1"/>    
+      <attribute id="30" name="user">        
+        <position height="0" width="0" x="616" y="-489"/>      
+      </attribute>      
+      <multiplicity id="31" minimum="0" maximum="1">        
+        <position height="0" width="0" x="616" y="-489"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="32">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="33" name="user">        
+        <position height="0" width="0" x="616" y="-489"/>      
+      </attribute>      
+      <multiplicity id="34" minimum="0" maximum="1">        
+        <position height="0" width="0" x="616" y="-489"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="35">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="36" name="stub">        
+        <position height="0" width="0" x="-613" y="-307"/>      
+      </attribute>      
+      <multiplicity id="37" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-613" y="-307"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
