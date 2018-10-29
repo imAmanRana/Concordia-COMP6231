@@ -1,0 +1,17 @@
+module remoteObject {
+
+	interface EnrollmentInterface{
+	
+		/* Advisor Operations */
+		boolean addCourse(in string advisorId, in string courseId, in string semester, in long capacity);		
+		boolean removeCourse(in string advisorId, in string courseId, in string semester);		
+		any listCourseAvailability(in string advisorId, in string semester);
+				
+		/* Student Operations */		
+		any enrolCourse(in string studentId, in string courseId, in string semester);
+		any getClassSchedule(in string studentId);
+		any dropCourse(in string studentId,in string courseId);
+		any swapCourse(in string studentId,in string newCourseId,in string oldCourseId);
+	};
+
+};
