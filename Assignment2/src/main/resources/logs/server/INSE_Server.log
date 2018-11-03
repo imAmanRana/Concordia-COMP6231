@@ -1,0 +1,8 @@
+02/11/2018 19:58:53.603 - [INFO] - INSE Server ready and waiting.....
+02/11/2018 19:58:53.603 - [INFO] - INSE UDP Server Started............
+02/11/2018 20:01:56.592 - [INFO] - Received UDP Socket call for method[getClassSchedule] with parameters[COMPS4444]
+02/11/2018 20:02:39.430 - [INFO] - Received UDP Socket call for method[getClassSchedule] with parameters[SOENS4444]
+02/11/2018 20:04:22.441 - [INFO] - Received UDP Socket call for method[getClassSchedule] with parameters[COMPS4444]
+02/11/2018 20:04:25.739 - [INFO] - Received UDP Socket call for method[getClassSchedule] with parameters[COMPS4444]
+02/11/2018 20:04:42.338 - [INFO] - Received UDP Socket call for method[getClassSchedule] with parameters[COMPS4444]
+02/11/2018 20:04:44.782 - [INFO] - Received UDP Socket call for method[getClassSchedule] with parameters[COMPS4444]

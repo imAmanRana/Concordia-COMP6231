@@ -1,0 +1,14 @@
+02/11/2018 19:58:57.815 - [INFO] - SOEN Server ready and waiting.....
+02/11/2018 19:58:57.815 - [INFO] - SOEN UDP Server Started............
+02/11/2018 20:01:56.577 - [INFO] - Received UDP Socket call for method[getClassSchedule] with parameters[COMPS4444]
+02/11/2018 20:02:22.441 - [INFO] - METHOD[addCourse]; PARAMETERS[SOENA1234, SOEN6441, FALL, 2]; STATUS[true]; SERVER_MESSAGE[SOEN6441 Added.]
+02/11/2018 20:02:39.430 - [INFO] - Making UPD Socket Call to COMP Server for method : getClassSchedule
+02/11/2018 20:02:39.430 - [INFO] - Making UPD Socket Call to INSE Server for method : getClassSchedule
+02/11/2018 20:02:39.445 - [INFO] - METHOD[getClassSchedule]; PARAMETERS[SOENS4444]; STATUS[true]; SERVER_MESSAGE[{}]
+02/11/2018 20:02:39.461 - [INFO] - METHOD[enrolCourse]; PARAMETERS[SOENS4444, SOEN6441, FALL]; STATUS[true]; SERVER_MESSAGE[Enrollment Successful.]
+02/11/2018 20:04:22.441 - [INFO] - Received UDP Socket call for method[getClassSchedule] with parameters[COMPS4444]
+02/11/2018 20:04:22.441 - [INFO] - Received UDP Socket call for method[swapCourse] with parameters[{studentId=COMPS4444, newCourseId=SOEN6441, semester=FALL, oldCourseId=COMP6231, oldCourseDept=COMP}]
+02/11/2018 20:04:22.441 - [INFO] - Making UPD Socket Call to COMP Server for method : dropCourse
+02/11/2018 20:04:25.739 - [INFO] - Received UDP Socket call for method[getClassSchedule] with parameters[COMPS4444]
+02/11/2018 20:04:42.338 - [INFO] - Received UDP Socket call for method[getClassSchedule] with parameters[COMPS4444]
+02/11/2018 20:04:44.782 - [INFO] - Received UDP Socket call for method[getClassSchedule] with parameters[COMPS4444]

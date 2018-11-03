@@ -64,8 +64,10 @@ public class EnrollmentImpl extends EnrollmentInterfacePOA {
 	public boolean addCourse(String advisorId, String courseId, String semester, int capacity) {
 		boolean status = false;
 		String msg = Constants.EMPTYSTRING;
-
-		rl.lock(); // get the lock
+		
+		//Acquire Lock
+		rl.lock();
+		
 		if (deptDatabase.containsKey(semester)) {
 			HashMap<String, HashMap<String, Object>> courses = deptDatabase.get(semester);
 
@@ -97,7 +99,8 @@ public class EnrollmentImpl extends EnrollmentInterfacePOA {
 			msg = courseId + " Added.";
 		}
 
-		rl.unlock(); // release the lock
+		// release the lock
+		rl.unlock();
 
 		LOGGER.info(String.format(Constants.LOG_MSG, Constants.OP_ADD_COURSE,
 				Arrays.asList(advisorId, courseId, semester, capacity), status, msg));
@@ -474,6 +477,10 @@ public class EnrollmentImpl extends EnrollmentInterfacePOA {
 			// check if the student is already enrolled in newCourseId
 			status = false;
 			msg = studentId + " is already enrolled in " + newCourseId;
+		} else if(newCourseDept != this.department && oldCourseDept==this.department && outOfDepartmentCourses.size()>=2) {
+			status = false;
+			msg = studentId + " is already enrolled in " + Constants.MAX_ELECTIVE_COURSES
+					+ " out-of-department courses.";
 		}
 
 		if (!status)
@@ -514,7 +521,13 @@ public class EnrollmentImpl extends EnrollmentInterfacePOA {
 						status = true;
 						msg = Constants.OP_SWAP_COURSE+" successfully";
 					}
+				} else {
+					status = result2.getKey();
+					msg = result2.getValue();
 				}
+			} else {
+				status = result2.getKey();
+				msg = result2.getValue();
 			}
 			rl.unlock();
 			// finish
@@ -534,6 +547,9 @@ public class EnrollmentImpl extends EnrollmentInterfacePOA {
 			status = result2.getKey();
 			msg = result2.getValue();
 		}
+		
+		LOGGER.info(String.format(Constants.LOG_MSG, Constants.OP_SWAP_COURSE, Arrays.asList(studentId, newCourseId,oldCourseId),
+				status, msg));
 
 		return returnAny(new SimpleEntry<Boolean, String>(status, msg));
 	}
@@ -624,6 +640,7 @@ public class EnrollmentImpl extends EnrollmentInterfacePOA {
 		String msg;
 
 		try {
+			//Acquire LOCK
 			rl.lock();
 
 			result = checkCouseAvailability(newCourseId, semester);
@@ -656,6 +673,7 @@ public class EnrollmentImpl extends EnrollmentInterfacePOA {
 			}
 			return new SimpleEntry<Boolean, String>(status, msg);
 		} finally {
+			//Release the lock
 			rl.unlock();
 		}
 	}
