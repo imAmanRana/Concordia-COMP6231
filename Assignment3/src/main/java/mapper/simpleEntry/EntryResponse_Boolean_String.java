@@ -37,5 +37,8 @@ public class EntryResponse_Boolean_String {
 		this.response = response;
 	}
 	
+	public String toString() {
+		return response.toString();
+	}
 	
 }

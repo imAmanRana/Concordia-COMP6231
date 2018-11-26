@@ -35,4 +35,8 @@ public class MapResponse_String_StringArray {
 	public void setClassSchedule(Map<String, String[]> classSchedule) {
 		this.classSchedule = classSchedule;
 	}
+	
+	public String toString() {
+		return classSchedule.toString();
+	}
 }

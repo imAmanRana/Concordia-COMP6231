@@ -25,7 +25,7 @@ public class User {
 	User() {
 		
 	}
-	User(Department dept, Role role, int id) {
+	public User(Department dept, Role role, int id) {
 		this.dept = dept;
 		this.role = role;
 		this.id = id;

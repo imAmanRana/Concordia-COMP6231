@@ -345,8 +345,10 @@ public class EnrollmentImpl implements EnrollmentInterface {
 	 */
 	public MapResponse_String_StringArray getClassSchedule(String studentId) throws RemoteException {
 		HashMap<String, ArrayList<String>> schedule = new HashMap<>();
+		rl.lock();
 		schedule.putAll(getClassScheduleThisServer(studentId));
-
+		rl.unlock();
+		
 		// inquire different departments
 		for (Department dept : Department.values()) {
 			if (dept != this.department) {
@@ -372,6 +374,7 @@ public class EnrollmentImpl implements EnrollmentInterface {
 
 	private HashMap<String, ArrayList<String>> getClassScheduleThisServer(String studentId) {
 		HashMap<String, ArrayList<String>> schedule = new HashMap<>();
+		rl.lock();
 		deptDatabase.forEach((semester, courses) -> {
 			courses.forEach((course, details) -> {
 				if (((HashSet<String>) details.get(Constants.STUDENT_IDS)).contains(studentId)) {
@@ -385,6 +388,7 @@ public class EnrollmentImpl implements EnrollmentInterface {
 				}
 			});
 		});
+		rl.unlock();
 		return schedule;
 	}
 

@@ -37,6 +37,10 @@ public class MapResponse_String_Integer {
 		this.courseList = courseList;
 	}
 	
+	public String toString() {
+		return courseList.toString();
+	}
+	
 	
 
 }
